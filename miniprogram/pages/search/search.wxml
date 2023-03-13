@@ -1,0 +1,11 @@
+<!--pages/search.wxml-->
+<view>
+<input id="searchKey" value="" placeholder="请输入关键字" bindinput="searchKeyChange"/>
+<button bindtap="searchClick" size="mini"> search </button>
+
+<view wx:for="{{repoList}}">
+<image src="{{item.owner.avatar_url}}"/>
+{{item.description}}
+</view>
+
+</view>
