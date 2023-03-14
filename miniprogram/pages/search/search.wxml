@@ -1,11 +1,25 @@
 <!--pages/search.wxml-->
-<view>
-<input id="searchKey" value="" placeholder="请输入关键字" bindinput="searchKeyChange"/>
-<button bindtap="searchClick" size="mini"> search </button>
+<view style = "flex-direction: column;">
 
-<view wx:for="{{repoList}}">
-<image src="{{item.owner.avatar_url}}"/>
-{{item.description}}
+<view class="searchBar" style = "flex-direction: row;">
+<input id="searchKey" value="" placeholder="请输入关键字" bindinput="searchKeyChange"/>
+<button bindtap="searchClick"> search </button>
+</view>
+
+<view class="repoItem" wx:for="{{repoList}}">
+
+<view style = "flex-direction: row;">
+<image class="avatar" src="{{item.owner.avatar_url}}" bindtap="clickAvatar" data-ownerlogin="{{item.owner.login}}"/>
+<view style = "flex-direction: column;">
+<text class="repoName">{{item.name}}</text>
+<text class="userName">{{item.owner.name}}</text>
+</view>
+</view>
+
+<view>
+<text class="desc">{{item.description}}</text>
+</view>
+
 </view>
 
 </view>

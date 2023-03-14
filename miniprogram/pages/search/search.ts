@@ -74,6 +74,15 @@ Page({
     this.data.searchKey = e.detail.value
   },
 
+  clickAvatar: function (e: object) {
+    const login = e.target.dataset.ownerlogin
+    
+    wx.navigateTo({
+      url: "../user/user?login="+login
+    }
+    )
+  },
+
   requestSearch(searchKey: String) {
     const $this = this 
     wx.request({
