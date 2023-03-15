@@ -11,7 +11,7 @@
 <view style = "flex-direction: row;">
 <image class="avatar" src="{{item.owner.avatar_url}}" bindtap="clickAvatar" data-ownerlogin="{{item.owner.login}}"/>
 <view style = "flex-direction: column;">
-<text class="repoName">{{item.name}}</text>
+<text class="repoName">{{item.path }}</text>
 <text class="userName">{{item.owner.name}}</text>
 </view>
 </view>

@@ -6,17 +6,30 @@ view {
 .searchBar {
   margin-left: 30rpx;
   margin-right: 30rpx;
+  background-color:ghostwhite;
 }
 
 input {
+
   align-items: center;
   width: 700rpx;
   height: 80rpx;
+  border:1rpx solid;
+  color:black;
+  box-sizing: border-box;
 }
 
 button {
+  display: flex;
+  text-align: center;
+  border:1rpx solid;
+  color: black;
   height: 80rpx;
   flex-shrink: 2;
+  align-items: center;
+  border-radius: 10rpx;
+  padding: 0rpx;
+  box-sizing: border-box;
 }
 
 
@@ -55,6 +68,6 @@ button {
   flex-direction: column;
   margin: 30rpx 30rpx 0rpx 30rpx;
   padding: 20rpx;
-  border-radius: 5rpx;
+  border-radius: 20rpx;
   background-color: rgb(233, 229, 229);
 }

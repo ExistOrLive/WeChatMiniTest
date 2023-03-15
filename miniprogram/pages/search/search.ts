@@ -6,7 +6,8 @@ Page({
    */
   data: {
     searchKey:"",
-    repoList: [Object]
+    repoList: [Object],
+    page: 1
   },
 
   /**
@@ -55,7 +56,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+      console.log("123");
+      this.requestSearch(this.data.searchKey,true)    
   },
 
   /**
@@ -66,8 +68,8 @@ Page({
   },
 
   searchClick: function () {
-    console.log(this.data.searchKey)
-    this.requestSearch(this.data.searchKey)
+    console.log(this.data)
+    this.requestSearch(this.data.searchKey,false)
   },
 
   searchKeyChange: function (e) {
@@ -83,22 +85,34 @@ Page({
     )
   },
 
-  requestSearch(searchKey: String) {
+  requestSearch(searchKey: String, loadnextpage: boolean) {
     const $this = this 
+    var currentpage =loadnextpage ? this.data.page+1: 1
+    
     wx.request({
       url: "https://gitee.com/api/v5/search/repositories",
       data: {
         q: searchKey,
-        page: 1,
-        per_page: 20,
-        order: "desc"
+        page: currentpage,
+        per_page: 5,
+        order: "desc",
+        access_token:"65bb461760a9cd54f9b4ca3b425b4f94"
+        
       },
       header: {
         "content-type": "application/json;charset=UTF-8"
       },
       success(res) { [this]
-        console.log(res.data)
-        $this.setData({repoList: res.data})
+        $this.setData({page:currentpage})
+        if (loadnextpage){
+          var currentpagedata =$this.data.repoList
+          console.log(res.data)
+          currentpagedata =currentpagedata.concat(res.data)
+          $this.setData({repoList: currentpagedata})
+        }else{
+          $this.setData({repoList: res.data})
+        }
+        
       },
       fail(e) {
         console.log(e)
