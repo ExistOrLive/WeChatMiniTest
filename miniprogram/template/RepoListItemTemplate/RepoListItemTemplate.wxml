@@ -1,0 +1,19 @@
+<template name="RepoListItemTemplate">
+<view class="RepoListItem" style="display: flex;">
+
+<!--RepoListItem_HeaderView-->
+<view class="RepoListItem_HeaderView" style = "flex-direction: row;">
+<image class="RepoListItem_Avatar" src="{{owner.avatar_url}}" bindtap="clickRepoAvatar" data-ownerlogin="{{owner.login}}"/>
+<view style = "flex-direction: column;">
+<text class="RepoListItem_RepoName">{{path}}</text>
+<text class="RepoListItem_UserName">{{owner.name}}</text>
+</view>
+</view>
+
+<!--RepoListItem_DescView-->
+<view class="RepoListItem_DescView" style = "flex-direction: column;">
+<text class="RepoListItem_DescText">{{description}}</text>
+</view>
+
+</view>
+</template>

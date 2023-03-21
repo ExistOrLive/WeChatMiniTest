@@ -1,3 +1,5 @@
+
+var giteeAPI = require("../../request/gitee-api")
 // pages/search.ts
 Page({
 
@@ -5,16 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchKey:"",
-    repoList: [Object],
-    page: 1
+    searchKey: "",
+    currentInput: "",
+    list: [],
+    page: 1,
+    searchType: "repo"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-   
+
   },
 
   /**
@@ -56,8 +60,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-      console.log("123");
-      this.requestSearch(this.data.searchKey,true)    
+
   },
 
   /**
@@ -67,57 +70,144 @@ Page({
 
   },
 
-  searchClick: function () {
-    console.log(this.data)
-    this.requestSearch(this.data.searchKey,false)
+  typeClick(e) {
+    this.setData({page: 1})
+    this.setData({list: []})
+    this.setData({searchType: e.target.id})
+    this.searchClick()
+  },
+
+  searchClick: function() {
+    const currentSearchKey: String = this.data.currentInput
+    if (currentSearchKey.length == 0) {
+      wx.showToast({ // 显示Toast
+        title: '请输入关键字',
+        duration: 1500
+      })
+    } else {
+      this.setData({ searchKey: currentSearchKey })
+
+      switch(this.data.searchType) {
+        case "repo":
+          this.requestSearchRepos(currentSearchKey, false)
+          break
+        case "user":
+          this.requestSearchUsers(currentSearchKey, false)
+          break
+        case "issue":
+          this.requestSearchIssues(currentSearchKey, false)
+          break 
+      }
+      
+    }
+  },
+
+  loadMoreData: function () {
+    switch(this.data.searchType) {
+      case "repo":
+        this.requestSearchRepos(this.data.searchKey, true)
+        break 
+      case "user":
+        this.requestSearchUsers(this.data.searchKey, true)
+        break 
+      case "issue":
+        this.requestSearchIssues(this.data.searchKey, true)
+        break 
+    }
+    
   },
 
   searchKeyChange: function (e) {
-    this.data.searchKey = e.detail.value
+    this.setData({ currentInput: e.detail.value })
   },
 
-  clickAvatar: function (e: object) {
+  clickRepoAvatar: function (e: object) {
     const login = e.target.dataset.ownerlogin
-    
+
     wx.navigateTo({
-      url: "../user/user?login="+login
+      url: "../user/user?login=" + login
     }
     )
   },
 
-  requestSearch(searchKey: String, loadnextpage: boolean) {
-    const $this = this 
-    var currentpage =loadnextpage ? this.data.page+1: 1
-    
-    wx.request({
-      url: "https://gitee.com/api/v5/search/repositories",
-      data: {
-        q: searchKey,
-        page: currentpage,
-        per_page: 5,
-        order: "desc",
-        access_token:"65bb461760a9cd54f9b4ca3b425b4f94"
-        
-      },
-      header: {
-        "content-type": "application/json;charset=UTF-8"
-      },
-      success(res) { [this]
-        $this.setData({page:currentpage})
-        if (loadnextpage){
-          var currentpagedata =$this.data.repoList
-          console.log(res.data)
-          currentpagedata =currentpagedata.concat(res.data)
-          $this.setData({repoList: currentpagedata})
-        }else{
-          $this.setData({repoList: res.data})
-        }
-        
-      },
-      fail(e) {
-        console.log(e)
-      }
+  requestSearchRepos(searchKey: String, loadnextpage: boolean) {
+    const $this = this
+    var currentpage = loadnextpage ? this.data.page + 1 : 1
 
-    })
+    giteeAPI.requestSearchRepos(searchKey,
+      currentpage,
+      function (res) { 
+        $this.setData({ page: currentpage })
+        if (loadnextpage) {
+          var currentpagedata = $this.data.list
+          console.log(res)
+          currentpagedata = currentpagedata.concat(res)
+          $this.setData({ list: currentpagedata })
+        } else {
+          $this.setData({ list: res })
+        }
+      },
+      function (e) {
+        console.log(e)
+        wx.showToast({ // 显示Toast
+          title: e,
+          duration: 1500
+        })
+      }
+    )
+  },
+
+  requestSearchUsers(searchKey: String, loadnextpage: boolean) {
+    const $this = this
+    var currentpage = loadnextpage ? this.data.page + 1 : 1
+
+    giteeAPI.requestSearchUsers(searchKey,
+      currentpage,
+      function (res) { 
+        $this.setData({ page: currentpage })
+        if (loadnextpage) {
+          var currentpagedata = $this.data.list
+          console.log(res)
+          currentpagedata = currentpagedata.concat(res)
+          $this.setData({ list: currentpagedata })
+        } else {
+          $this.setData({ list: res })
+        }
+      },
+      function (e) {
+        console.log(e)
+        wx.showToast({ // 显示Toast
+          title: e,
+          duration: 1500
+        })
+      }
+    )
+  },
+
+  requestSearchIssues(searchKey: String, loadnextpage: boolean) {
+    const $this = this
+    var currentpage = loadnextpage ? this.data.page + 1 : 1
+
+    giteeAPI.requestSearchIssues(searchKey,
+      currentpage,
+      function (res) { 
+        $this.setData({ page: currentpage })
+        if (loadnextpage) {
+          var currentpagedata = $this.data.list
+          console.log(res)
+          currentpagedata = currentpagedata.concat(res)
+          $this.setData({ list: currentpagedata })
+        } else {
+          $this.setData({ list: res })
+        }
+      },
+      function (e) {
+        console.log(e)
+        wx.showToast({ // 显示Toast
+          title: e,
+          duration: 1500
+        })
+      }
+    )
   }
 })

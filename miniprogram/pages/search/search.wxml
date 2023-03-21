@@ -1,25 +1,44 @@
 <!--pages/search.wxml-->
+<!--<include src="currency.wxml"/> 不会引入template里的内容 -->
+<import src="../../template/RepoListItemTemplate/RepoListItemTemplate.wxml"/>
+<import src="../../template/UserListItemTemplate/UserListItemTemplate.wxml"/>
+
 <view style = "flex-direction: column;">
 
-<view class="searchBar" style = "flex-direction: row;">
+<view class="searchBar">
 <input id="searchKey" value="" placeholder="请输入关键字" bindinput="searchKeyChange"/>
-<button bindtap="searchClick"> search </button>
+<button id="searchButton" bindtap="searchClick" disabled="{{currentInput.length == 0}}">search</button>
 </view>
 
-<view class="repoItem" wx:for="{{repoList}}">
+<scroll-view id="typeList" scroll-x>
+<view style = "display: flex; flex-direction: row;">
+<button class="{{searchType == 'repo' ? 'typeButton_Selected' : 'typeButton_normal'}}" id="repo" bindtap="typeClick"> repo </button>
+<button class="{{searchType == 'user' ? 'typeButton_Selected' : 'typeButton_normal'}}"  id="user"  bindtap="typeClick"> user </button>
+<button class="{{searchType == 'issue' ? 'typeButton_Selected' : 'typeButton_normal'}}" id="issue"  bindtap="typeClick"> issue </button>
+</view>
+</scroll-view>
 
-<view style = "flex-direction: row;">
-<image class="avatar" src="{{item.owner.avatar_url}}" bindtap="clickAvatar" data-ownerlogin="{{item.owner.login}}"/>
+<scroll-view id="searchList" scroll-y bindscrolltolower="loadMoreData">
+
+<view wx:for="{{list}}">
+
+<!-- repo 列表 -->
+<template is="RepoListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'repo'}}"></template>
+
+<!-- issue 列表 -->
+<view style = "flex-direction: row;" wx:if="{{searchType == 'issue'}}">
+<image class="avatar" src="{{item.user.avatar_url}}" bindtap="clickAvatar" data-ownerlogin="{{item.owner.login}}"/>
 <view style = "flex-direction: column;">
-<text class="repoName">{{item.path }}</text>
-<text class="userName">{{item.owner.name}}</text>
+<text class="repoName">{{item.repository.path }}</text>
+<text class="userName">{{item.user.name}}</text>
 </view>
 </view>
 
-<view>
-<text class="desc">{{item.description}}</text>
-</view>
+<!-- user 列表 -->
+<template is="UserListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'user'}}"></template>
 
-</view>
+</view> 
+
+</scroll-view>
 
 </view>

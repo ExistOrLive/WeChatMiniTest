@@ -1,0 +1,13 @@
+<template name="UserListItemTemplate">
+<view class="UserListItem" style="display: flex;">
+
+<!--UserListItem_HeaderView-->
+<view class="UserListItem_HeaderView" style = "flex-direction: row;">
+<image class="UserListItem_Avatar" src="{{avatar_url}}" bindtap="clickUserAvatar" data-ownerlogin="{{login}}"/>
+<view style = "flex-direction: column;">
+<text class="UserListItem_UserName">{{name+"("+login+")"}}</text>
+</view>
+</view>
+
+</view>
+</template>
