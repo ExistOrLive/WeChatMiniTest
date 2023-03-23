@@ -122,10 +122,18 @@ Page({
   },
 
   clickRepoAvatar: function (e: object) {
-    const login = e.target.dataset.ownerlogin
+    const login = e.currentTarget.dataset.ownerlogin
 
     wx.navigateTo({
       url: "../user/user?login=" + login
+    }
+    )
+  },
+
+  clickRepo: function (e) {
+    const fullName = e.currentTarget.dataset.fullname
+    wx.navigateTo({
+      url: "../repo/repo?fullName=" + fullName
     }
     )
   },

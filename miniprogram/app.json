@@ -4,7 +4,8 @@
     "pages/search/search",
     "pages/logs/logs",
     "pages/explore/explore",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/repo/repo"
   ],
   "window": {
     "backgroundTextStyle": "light",

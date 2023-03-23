@@ -1,5 +1,5 @@
 <template name="RepoListItemTemplate">
-<view class="RepoListItem" style="display: flex;">
+<view class="RepoListItem" style="display: flex;" bindtap="clickRepo" data-fullname="{{full_name}}">
 
 <!--RepoListItem_HeaderView-->
 <view class="RepoListItem_HeaderView" style = "flex-direction: row;">
@@ -13,6 +13,17 @@
 <!--RepoListItem_DescView-->
 <view class="RepoListItem_DescView" style = "flex-direction: column;">
 <text class="RepoListItem_DescText">{{description}}</text>
+</view>
+
+<!--RepoListItem_DescView-->
+<view class="RepoListItem_ItemView" style = "flex-direction: row;">
+
+<text>{{language}}</text> 
+<text class="iconfont icon-star"></text>
+<text>{{ stargazers_count}}</text>
+
+<text class="iconfont icon-git-repo-forked"></text>
+<text>{{ forks_count}}</text>
 </view>
 
 </view>

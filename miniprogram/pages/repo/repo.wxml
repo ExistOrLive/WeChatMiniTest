@@ -1,0 +1,2 @@
+<!--pages/repo/repo.wxml-->
+<text>pages/repo/repo.wxml {{fullName}}</text>
