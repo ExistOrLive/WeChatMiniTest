@@ -1,6 +1,12 @@
 /* pages/search.wxss */
 @import "../../template/RepoListItemTemplate/RepoListItemTemplate.wxss";
 @import "../../template/UserListItemTemplate/UserListItemTemplate.wxss";
+@font-face {
+  font-family: 'iconfont';  /* Project id 2924324 */
+  src: url('//at.alicdn.com/t/c/font_2924324_law4dolfe2m.woff2?t=1679503900062') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2924324_law4dolfe2m.woff?t=1679503900062') format('woff'),
+       url('//at.alicdn.com/t/c/font_2924324_law4dolfe2m.ttf?t=1679503900062') format('truetype');
+}
 
 view {
   display: flex;
