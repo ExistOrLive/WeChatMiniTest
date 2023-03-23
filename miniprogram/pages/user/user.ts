@@ -5,16 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    login: "",
-    userInfo: null
+    userInfo:{
+      name: "",
+      avatarUrl:"",
+      remark:"",
+      createDate:"",
+  
+      followers:0,
+      following:0,
+      organzationUrl:"",
+      html_url:"",
+    }
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const login = options.login
-    this.setData({login:login})
+    const name = options.name
+    this.setData({name:name})
+    const html_url = options.html_url
+    this.setData({html_url:html_url})
+
   },
 
   /**

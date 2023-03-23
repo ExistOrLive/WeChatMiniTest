@@ -1,2 +1,29 @@
 <!--pages/user/user.wxml-->
 <text>this is user page {{login}}</text>
+
+<view style="flex-direction: column;">
+<view>
+<image>
+
+</image>
+<view>
+<text></text>
+<text></text>
+<text></text>
+</view>
+</view>
+<!-- ----------------------------------------------- -->
+<view>
+<button></button>
+<button></button>
+<button></button>
+</view>
+<!-- ------------------------------------ -->
+<view>
+<text>组织</text>
+<text>邮箱</text>
+<text>网址</text>
+<text>私信</text>
+</view>
+
+</view>
