@@ -1,11 +1,14 @@
 // pages/repo/repo.ts
+import { requestRepoInfo } from "../../request/gitee-api"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    fullName: ""
+    fullName: "",
+    repoInfo: null
   },
 
   /**
@@ -13,6 +16,7 @@ Page({
    */
   onLoad(option) {
     this.setData({fullName: option.fullName})
+    this.getRepoInfo() 
   },
 
   /**
@@ -62,5 +66,23 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  getRepoInfo() {
+    const $this = this;
+    requestRepoInfo(
+      this.data.fullName,
+      function( repoInfo ) {
+        $this.setData({"repoInfo": repoInfo})
+      },
+      function( e ) {
+        console.log(e)
+        wx.showToast({ // 显示Toast
+          title: e,
+          duration: 1500
+        })
+      }
+    )
   }
+
 })

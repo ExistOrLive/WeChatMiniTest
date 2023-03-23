@@ -2,8 +2,8 @@
 <view class="UserListItem" style="display: flex;">
 
 <!--UserListItem_HeaderView-->
-<view class="UserListItem_HeaderView" style = "flex-direction: row;">
-<image class="UserListItem_Avatar" src="{{avatar_url}}" bindtap="clickUserAvatar" data-ownerlogin="{{login}}"/>
+<view class="UserListItem_HeaderView" style = "flex-direction: row;" bindtap="clickRepoAvatar" data-ownerlogin="{{login}}">
+<image class="UserListItem_Avatar" src="{{avatar_url}}" />
 <view style = "flex-direction: column;">
 <text class="UserListItem_UserName">{{name+"("+login+")"}}</text>
 </view>

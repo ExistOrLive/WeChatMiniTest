@@ -1,2 +1,23 @@
 <!--pages/repo/repo.wxml-->
-<text>pages/repo/repo.wxml {{fullName}}</text>
+<view wx:if="{{repoInfo != null}}">
+
+<view class="Repo_Info_Header" style="display: flex; flex-direction: column;">
+
+<image src="{{repoInfo.owner.avatar_url}}"></image>
+
+<text>{{repoInfo.full_name}}</text>
+
+<text>{{repoInfo.created_at}}</text>
+
+<text>{{repoInfo.stargazers_count}}</text>
+
+<text>{{repoInfo.forks_count}}</text>
+
+<text>{{repoInfo.watchers_count}}</text>
+
+<text>{{repoInfo.open_issues_count}}</text>
+
+</view>
+
+</view>
+
