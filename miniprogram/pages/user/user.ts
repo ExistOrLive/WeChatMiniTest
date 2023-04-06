@@ -1,35 +1,46 @@
 // pages/user/user.ts
+
+var giteeAPI = require("../../request/gitee-api")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{
-      name: "",
-      avatarUrl:"",
-      remark:"",
-      createDate:"",
-  
-      followers:0,
-      following:0,
-      organzationUrl:"",
-      html_url:"",
-    }
-    
+    currentData:"",
+    date:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const name = options.name
-    this.setData({name:name})
-    const html_url = options.html_url
-    this.setData({html_url:html_url})
+    const login = options.login
+    console.info("current"+login)
+    this.requestUserDetails(login)
 
   },
+  requestUserDetails(searchKey: String) {
+    const $this = this
+    giteeAPI.requestUserDetails(searchKey,
+      function (res) {
+        $this.setData({currentData:res})
+        $this.setData({date:$this.data.currentData.created_at.substring(0,10)})
+        //console.log($this.data.currentData)
+        // console.log("1111111111111111")
+        console.log($this.data.currentData.login)
 
+      },
+      function (e) {
+        console.log(e)
+        wx.showToast({ // 显示Toast
+          title: e,
+          duration: 1500
+        })
+      }
+    )
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

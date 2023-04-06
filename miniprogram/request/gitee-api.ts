@@ -98,9 +98,35 @@ function requestSearchIssues(searchKey: String,
 
   })
 }
+// 用户详情
+function requestUserDetails(searchKey: String,
+  success: Function,
+  fail: Function) {
+  wx.request({
+    url: "https://gitee.com/api/v5/users/"+searchKey,
+    
+    header: {
+      "content-type": "application/json;charset=UTF-8"
+    },
+    success(res) {
+      console.log(res)
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        success(res.data)
+      } else {
+        fail(res.data)
+      }
+    },
+    fail(e) {
+      console.log(e)
+      fail(e)
+    }
+
+  })
+}
 
 module.exports = {
   requestSearchRepos: requestSearchRepos,
   requestSearchUsers: requestSearchUsers,
-  requestSearchIssues: requestSearchIssues
+  requestSearchIssues: requestSearchIssues,
+  requestUserDetails:requestUserDetails
 }

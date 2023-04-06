@@ -35,7 +35,7 @@
 </view>
 
 <!-- user 列表 -->
-<template is="UserListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'user'}}"></template>
+<template is="UserListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'user'}}" bindtap="clickUser"></template>
 
 </view> 
 

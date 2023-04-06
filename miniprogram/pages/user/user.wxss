@@ -1,1 +1,50 @@
 /* pages/user/user.wxss */
+
+view {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.avatar{
+  height: 150rpx;
+  width: 150rpx;
+  margin: 20rpx;
+}
+.name{
+  font-size: 40rpx;
+  color: blue;
+  margin-top: 20rpx;
+  font-weight: 600;
+}
+.bio{
+  font-size: 30rpx;
+  color:black;
+  font-weight: 400;
+}
+.date{
+  font-size: 30rpx;
+  color:black;
+  font-weight: 400;
+}
+button{
+  text-align: center;
+  font-size: 30rpx;  
+  font-weight:500;
+  background-color:whitesmoke;
+  border-radius: 10rpx;
+}
+.organization{
+  text-align: right;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.emailAndUrl{
+  
+  margin-bottom: 20rpx; 
+}
+.email{
+  margin-bottom: 1rpx;
+  text-align: left;
+  font-weight: bold;
+}

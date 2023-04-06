@@ -1,29 +1,41 @@
 <!--pages/user/user.wxml-->
-<text>this is user page {{login}}</text>
-
 <view style="flex-direction: column;">
-<view>
-<image>
-
-</image>
-<view>
-<text></text>
-<text></text>
-<text></text>
+<view style="flex-direction:row;">
+<image  src="{{currentData.avatar_url}}" class="avatar"/>
+<view style="flex-direction: column;">
+<text class="name">{{currentData.name}}({{currentData.login}})</text>
+<text class="bio">{{currentData.bio}}</text>
+<text class="date">加入于{{date}}</text>
 </view>
 </view>
 <!-- ----------------------------------------------- -->
-<view>
-<button></button>
-<button></button>
-<button></button>
+<view style="flex-direction: row;">
+<button>
+<text>仓库\n</text>
+<text>{{currentData.public_repos}}</text>
+</button>
+<button>
+<text>Followers\n</text>
+<text>{{currentData.followers}}</text></button>
+<button>
+<text>Following\n</text>
+<text>{{currentData.following}}</text></button>
 </view>
 <!-- ------------------------------------ -->
-<view>
-<text>组织</text>
-<text>邮箱</text>
-<text>网址</text>
-<text>私信</text>
+<view style="flex-direction:column;">
+<button class="organization" style="width: 746rpx;">
+<text style="text-align: left; margin-right: 500rpx;">组织</text>
+<text style="color:aqua;">></text>
+</button>
+<!-- {{currentData.organizations_url}} -->
+<view style="flex-direction:column;" class="emailAndUrl">
+<button style="width: 746rpx;" class="email">{{currentData.email}}
+</button>
+
+<button style="width: 746rpx; text-align: left; font-weight: bold;" >{{currentData.html_url}}</button>
+</view>
+<button style="width: 746rpx; text-align: left; font-weight: bold;" >私信</button>
+<!-- {{currentData.wechat}} -->
 </view>
 
 </view>

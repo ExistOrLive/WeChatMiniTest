@@ -137,6 +137,7 @@ Page({
     }
     )
   },
+  
 
   requestSearchRepos(searchKey: String, loadnextpage: boolean) {
     const $this = this
