@@ -23,19 +23,13 @@
 <view wx:for="{{list}}">
 
 <!-- repo 列表 -->
-<template is="RepoListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'repo'}}"></template>
+<RepoListItem wx:if="{{searchType == 'repo'}}" repoModel="{{item}}"/>
 
 <!-- issue 列表 -->
-<view style = "flex-direction: row;" wx:if="{{searchType == 'issue'}}">
-<image class="avatar" src="{{item.user.avatar_url}}" bindtap="clickAvatar" data-ownerlogin="{{item.owner.login}}"/>
-<view style = "flex-direction: column;">
-<text class="repoName">{{item.repository.path }}</text>
-<text class="userName">{{item.user.name}}</text>
-</view>
-</view>
+<IssueListItem wx:if="{{searchType == 'issue'}}" issueModel="{{item}}"/>
 
 <!-- user 列表 -->
-<template is="UserListItemTemplate" data="{{...item}}" wx:if="{{searchType == 'user'}}"></template>
+<UserListItem wx:if="{{searchType == 'user'}}" userModel="{{item}}"/>
 
 </view> 
 

@@ -1,1 +1,60 @@
 /* pages/repo/repo.wxss */
+@import "../../iconfont/iconfont.wxss";
+
+.Repo_Info_Header {
+  width: 100%;
+  background-color: cornsilk;
+  padding: 30rpx 30rpx 30rpx 30rpx;
+  box-sizing: border-box;
+}
+
+#Repo_Info_Avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+
+#Repo_Info_FullName {
+  margin-top: 20rpx;
+  display: block;
+  font-size: 37rpx;
+  font-weight: 500;
+}
+
+#Repo_Info_CreateTime{
+  margin-top: 10rpx;
+  display: block;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: gray;
+}
+
+
+#Repo_Info_Desc{
+  margin-top: 20rpx;
+  display: block;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+.Repo_Info_Header_Item{
+  margin-top: 50rpx;
+  display: inline-block;
+  width: 25%;
+  text-align:center;
+  font-size: 30rpx;
+  font-weight: 400;
+}
+
+.Repo_Info_Header_Value {
+  display: block;
+  font-weight: 500;
+  font-size: 35rpx;
+}
+
+.Repo_Info_Header_Title {
+  display: block;
+}
+
+
+

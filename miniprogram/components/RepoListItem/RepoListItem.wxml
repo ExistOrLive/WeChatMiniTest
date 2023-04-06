@@ -1,0 +1,32 @@
+<!--components/RepoListItem/RepoListItem.wxml-->
+<view class="RepoListItem" style="display: flex;" bindtap="clickRepo">
+
+<!--RepoListItem_HeaderView-->
+<view class="RepoListItem_HeaderView" style = "display: flex; flex-direction: row;">
+<image class="RepoListItem_Avatar" src="{{repoModel.owner.avatar_url}}" bindtap="clickRepoAvatar"/>
+<view style = "display: flex; flex-direction: column;">
+<text class="RepoListItem_RepoName">{{repoModel.path}}</text>
+<text class="RepoListItem_UserName">{{repoModel.owner.name}}</text>
+</view>
+</view>
+
+<!--RepoListItem_DescView-->
+<view class="RepoListItem_DescView" style = "display: flex; flex-direction: column;">
+<text class="RepoListItem_DescText">{{repoModel.description}}</text>
+</view>
+
+<!--RepoListItem_DescView-->
+<view class="RepoListItem_ItemView" style = "display: flex; flex-direction: row;">
+
+<text>{{repoModel.language}}</text> 
+<text style="width: 30rpx;"></text>
+<text class="iconfont icon-star" style="position: relative; top: 5rpx;"></text>
+<text style="width: 10rpx;"></text>
+<text>{{ repoModel.stargazers_count}}</text>
+<text style="width: 30rpx;"></text>
+<text class="iconfont icon-git-repo-forked" style="position: relative; top: 5rpx;"></text>
+<text style="width: 10rpx;"></text>
+<text>{{repoModel.forks_count}}</text>
+</view>
+
+</view>

@@ -1,0 +1,12 @@
+<!--components/UserListItem/UserListItem.wxml-->
+<view class="UserListItem" style="display: flex;" bindtap="clickUser">
+
+<!--UserListItem_HeaderView-->
+<view class="UserListItem_HeaderView" style = "display: flex; flex-direction: row;">
+<image class="UserListItem_Avatar" src="{{userModel.avatar_url}}" />
+<view style = "display: flex; flex-direction: column;">
+<text class="UserListItem_UserName">{{userModel.name+"("+userModel.login+")"}}</text>
+</view>
+</view>
+
+</view>

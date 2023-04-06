@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "IssueListItem": "../../components/IssueListItem/IssueListItem",
+    "RepoListItem": "../../components/RepoListItem/RepoListItem",
+    "UserListItem": "../../components/UserListItem/UserListItem"
+  },
   "disableScroll": true
 }

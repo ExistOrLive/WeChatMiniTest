@@ -121,23 +121,6 @@ Page({
     this.setData({ currentInput: e.detail.value })
   },
 
-  clickRepoAvatar: function (e: object) {
-    const login = e.currentTarget.dataset.ownerlogin
-
-    wx.navigateTo({
-      url: "../user/user?login=" + login
-    }
-    )
-  },
-
-  clickRepo: function (e) {
-    const fullName = e.currentTarget.dataset.fullname
-    wx.navigateTo({
-      url: "../repo/repo?fullName=" + fullName
-    }
-    )
-  },
-
   requestSearchRepos(searchKey: String, loadnextpage: boolean) {
     const $this = this
     var currentpage = loadnextpage ? this.data.page + 1 : 1
