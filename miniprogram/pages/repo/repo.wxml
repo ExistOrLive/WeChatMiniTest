@@ -1,21 +1,51 @@
 <!--pages/repo/repo.wxml-->
 <view wx:if="{{repoInfo != null}}">
 
-<view class="Repo_Info_Header" style="display: flex; flex-direction: column;">
+<view class="Repo_Info_Header">
 
-<image src="{{repoInfo.owner.avatar_url}}"></image>
+<image id="Repo_Info_Avatar" src="{{repoInfo.owner.avatar_url}}"></image>
 
-<text>{{repoInfo.full_name}}</text>
+<text id="Repo_Info_FullName">{{repoInfo.full_name}}</text>
 
-<text>{{repoInfo.created_at}}</text>
+<text id= "Repo_Info_CreateTime">{{repoCreateAt}}</text>
 
-<text>{{repoInfo.stargazers_count}}</text>
+<text id= "Repo_Info_Desc">{{repoInfo.description}}</text>
 
-<text>{{repoInfo.forks_count}}</text>
+<view id="Repo_Info_Header_Items">
 
-<text>{{repoInfo.watchers_count}}</text>
+<view class= "Repo_Info_Header_Item">
+<text class= "Repo_Info_Header_Value">{{repoInfo.stargazers_count}}</text>
+<text class= "Repo_Info_Header_Title">stargazers</text>
+</view>
 
-<text>{{repoInfo.open_issues_count}}</text>
+<view class= "Repo_Info_Header_Item">
+<text class= "Repo_Info_Header_Value">{{repoInfo.forks_count}}</text>
+<text class= "Repo_Info_Header_Title">forks</text>
+</view>
+
+<view class= "Repo_Info_Header_Item">
+<text class= "Repo_Info_Header_Value">{{repoInfo.watchers_count}}</text>
+<text class= "Repo_Info_Header_Title">watchers</text>
+</view>
+
+<view class= "Repo_Info_Header_Item">
+<text class= "Repo_Info_Header_Value">{{repoInfo.open_issues_count}}</text>
+<text class= "Repo_Info_Header_Title">issues</text>
+</view>
+
+</view>
+
+</view>
+
+<view class="Repo_Info_Items">
+
+<view class="Repo_Info_Item" style="height: 80rpx; background-color: red;">
+<text class="Repo_Info_Item_Title" style="height: 100%; float:right;">dasdasd</text>
+
+<text class="Repo_Info_Item_Value">dasdasd</text>
+
+<text class="iconfont icon-arrow-right-bold" style="height: 100%;" ></text>
+</view>
 
 </view>
 

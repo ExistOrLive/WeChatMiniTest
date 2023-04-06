@@ -1,0 +1,12 @@
+<!--components/IssueListItem/IssueListItem.wxml-->
+<view class="IssueListItemContainer" bindtap="clickIssue" data-repoFullName="{{issueModel.repository.full_name}}" data-number="{{issueModel.number}}">
+<text class="Issue_Title">{{issueModel.title }}</text>
+<text class="Issue_Body">{{issueModel.body }}</text>
+<view>
+<text class="Issue_Repo_FullName" bindtap="clickRepo" data-repoFullName="{{issueModel.repository.full_name}}"> {{issueModel.repository.full_name}} </text>
+<text class="Issue_Number"> {{issueModel.number}} </text>
+<text class="Issue_State"> {{issueModel.state}} </text>
+<text class="Issue_Comment_Count"> {{issueModel.comments}} </text>
+<text class="Issue_Time"> {{"更新于"+issueModel.updated_at}} </text>
+</view>
+</view>

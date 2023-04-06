@@ -8,10 +8,6 @@
        url('//at.alicdn.com/t/c/font_2924324_law4dolfe2m.ttf?t=1679503900062') format('truetype');
 }
 
-view {
-  display: flex;
-  flex-wrap: nowrap;
-}
 
 .searchBar {
   margin-left: 30rpx;

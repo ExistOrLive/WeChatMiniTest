@@ -1,5 +1,6 @@
 // pages/repo/repo.ts
 import { requestRepoInfo } from "../../request/gitee-api"
+import { formatTime } from "../../utils/util"
 
 Page({
 
@@ -8,7 +9,8 @@ Page({
    */
   data: {
     fullName: "",
-    repoInfo: null
+    repoInfo: null,
+    repoCreateAt: ""
   },
 
   /**
@@ -74,6 +76,8 @@ Page({
       this.data.fullName,
       function( repoInfo ) {
         $this.setData({"repoInfo": repoInfo})
+        const repoCreateAt = formatTime(new Date(repoInfo.created_at))
+        $this.setData({"repoCreateAt":repoCreateAt})
       },
       function( e ) {
         console.log(e)
